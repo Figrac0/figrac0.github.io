@@ -1,0 +1,37 @@
+.promo{
+    min-height: 100vh;
+    position: relative;
+    background: url('../../img/wave2\ \(1\).jpg') no-repeat 50%/cover ;
+    padding-top: 205px;
+    &__title{
+        width: 535px;
+        margin-top: 10px;
+    }
+    &__subtitle{
+        position: relative;
+        z-index: 2;
+        padding-left: 10px;
+        
+    }
+    &__btns{
+        margin-top: 25px;
+        display: flex;
+        width: 250px;
+        align-items: center;
+        justify-content: space-between ;
+    }
+    &__link{
+        color:#000;
+        font-weight: bold;
+        &:hover{
+            color:rgb(56, 58, 131);
+            text-decoration: none;
+
+        }
+    }
+    .promo__text-color-change {
+        color: #FFA501; /* Изменяемый цвет текста */
+    }
+    
+
+}
