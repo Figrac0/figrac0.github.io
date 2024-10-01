@@ -1,0 +1,217 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    position: relative; /* чтобы картинка заезжала под header */
+    
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    
+    height: 50px;
+    background: #212121;
+}
+
+.menu{
+    display: flex;
+    justify-content:space-between;  /* выравнивание по центру  */
+    padding: 13px 70px;
+    margin: 0;
+    list-style: none ; 
+}
+
+.menu .menu_link{
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.menu .menu_item{
+    border-right: 2px dotted black; /* разграничение между айтемами  */
+    padding-right: 28px;
+}
+
+.subheader{
+    margin-top: 45.5px;
+    position: absolute; /* чтобы картинка заезжала под header */
+    width: 100%;  /* чтобы картинка заезжала под header */
+    height: 87px;
+    background-color: rgba(0, 0, 0, .6) /* .6-прозрачность только для bg */
+    /* opacity: 0.6000000238418579; /* прозрачность для всего блока  */ 
+}
+
+.subheader .subheader_logo{
+    display: block;
+    min-width:100%; /* чтобы если картинку поменяли она занимала такое же кол-во колонок */
+    margin-top: 16px;
+}
+
+.subheader .subheader_official{
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-top: 6px;
+
+}
+
+.subheader .subheader_call{
+    color: #FFF;
+    text-align: right;
+    font-size: 12px;
+    margin-top: 19px;
+    font-weight: 300;
+
+}
+
+.subheader .subheader_phone{
+    display: block;
+    text-align: right;
+    color: #FFF;
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 12px; 
+    text-transform: uppercase;
+}
+
+.subheader .subheader_btn{
+    margin-top: 19px;
+    width: 172px;
+    height: 46px;
+    color: #FFF;
+    border: none;
+    text-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.21);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    border-radius: 4px;
+    background: linear-gradient(0deg, #1EACC7 0%, #4CE2FF 100%);
+    box-shadow: 0px -3px 0px 0px rgba(0, 0, 0, 0.12) inset;
+}
+
+.promo{
+    padding: 150px 0 135px 0;
+    min-height: 800px;
+    background: url(../img/uber_bg.png) center/cover no-repeat;
+}
+
+.promo .promo_header{
+    color: #FFF;
+    font-size: 60px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 60px;
+    margin: 0;
+    text-align: center;
+}
+
+.promo .promo_subheader{
+    color: #FFF;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 36px;
+    margin: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.promo .promo_decsr{
+    margin-top: 22px;
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px; /* 133.333% */
+}
+
+.promo .promo_btn{
+    display: block;
+    margin: 118px auto 0 auto;
+    color: #FFF;
+    width: 259px;
+    height: 63px;
+    text-align: center;
+    text-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.21);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: linear-gradient(0deg, #1EACC7 0%, #4CE2FF 100%);
+    box-shadow: 0px -4px 0px 0px rgba(0, 0, 0, 0.12) inset;
+}
+
+.reason{
+    padding: 20px 0 65px 0;
+}
+
+.label{
+    margin: 0 auto;
+    color: #FFF;
+    text-align: center;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+    width: 115px;
+    height: 27px;
+    flex-shrink: 0;
+    background-color: black;
+    padding: 5px 12px;
+}
+
+.title{
+    margin-top: 36px;
+    color: #222;
+    text-align: center;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.reason .reason_block{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-top: 16px;
+
+}
+
+.reason .reason_block .reason_round{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    background-color: #1EACC7;
+    border-radius:100%;
+    width: 113px;
+    height: 113px;
+    margin-right: 25px;
+}
+
+.reason .reason_block .reason_descr{
+    width: 341px;
+}
+
+.reason .reason_block .reason_descr .reason_title{
+    color: #1EACC7;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 21px; /* 123.529% */
+}
+
+.reason .reason_block .reason_descr .reason_text{
+    color: #202020;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 21px;
+}
