@@ -16,7 +16,20 @@ document
             .then(
                 function (response) {
                     console.log("SUCCESS!", response.status, response.text);
-                    alert("Сообщение отправлено успешно!");
+
+                    // Показ галочки
+                    var successMessage = document.getElementById("success-message");
+                    successMessage.style.display = 'block'; // Показываем галочку
+
+                    // Очистка полей ввода
+                    document.getElementById("name").value = '';
+                    document.getElementById("email").value = '';
+                    document.getElementById("message").value = '';
+
+                    // Скрываем галочку через 1 секунду
+                    setTimeout(function() {
+                        successMessage.style.display = 'none'; // Скрываем галочку
+                    }, 1000);
                 },
                 function (error) {
                     console.log("FAILED...", error);
@@ -24,4 +37,3 @@ document
                 }
             );
     });
-
