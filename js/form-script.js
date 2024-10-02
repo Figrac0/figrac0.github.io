@@ -1,6 +1,3 @@
-// Инициализация EmailJS с вашим публичным ключом
-emailjs.init("ZU9yROUk5h6WjQdHm");
-
 document
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
@@ -27,3 +24,4 @@ document
                 }
             );
     });
+
