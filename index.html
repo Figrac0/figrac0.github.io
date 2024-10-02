@@ -796,7 +796,12 @@
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script> <!-- Правильный скрипт -->
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("ZU9yROUk5h6WjQdHm");
+        })();
+    </script>
     <script src="js/script.js"></script>
     <script src="js/form-script.js"></script>
   </body>
