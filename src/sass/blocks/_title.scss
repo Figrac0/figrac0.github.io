@@ -42,7 +42,7 @@
         color: #333;
     }
     &_fz36 {
-        font-size: 36px;
+        font-size: 38px;
         background: linear-gradient(135deg, #2c2c2c, #555);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -122,4 +122,15 @@
         transform: translateX(-50%) scale(1.1);
         box-shadow: 0 0 30px rgba(255, 165, 1, 0.6);
     }
+}
+.resume__subtitle {
+    font-size: 42px;
+    line-height: 1.22;
+    letter-spacing: 0.3px;
+    font-weight: 700;
+    color: #222;
+    font-family: "Inter", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    margin-bottom: 25px;
 }

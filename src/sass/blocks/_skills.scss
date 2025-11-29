@@ -115,10 +115,6 @@
             transition: color 0.3s ease;
         }
 
-        &-item:hover &-title {
-            color: $main-color;
-        }
-
         &-counter {
             font-size: 14px;
             line-height: 21px;
