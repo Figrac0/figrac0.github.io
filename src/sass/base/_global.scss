@@ -1,0 +1,296 @@
+// base/_global.scss
+
+// Премиум анимированный фон с частицами и волнами
+body {
+    position: relative;
+    overflow-x: hidden;
+
+    // Основной слой с золотыми градиентами
+    &::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: 
+            // Базовый шелковый градиент
+            linear-gradient(
+                135deg,
+                rgba(255, 253, 245, 0.98) 0%,
+                rgba(255, 250, 240, 0.95) 25%,
+                rgba(255, 248, 235, 0.92) 50%,
+                rgba(255, 245, 230, 0.95) 75%,
+                rgba(255, 252, 248, 0.98) 100%
+            ),
+            // Золотые акценты - УВЕЛИЧИВАЕМ РАЗМЕР чтобы покрыть края при движении
+            radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255, 215, 0, 0.15) 0%,
+                    transparent 70%
+                ),
+            radial-gradient(
+                circle at 80% 80%,
+                rgba(255, 165, 1, 0.12) 0%,
+                transparent 75%
+            ),
+            radial-gradient(
+                circle at 40% 70%,
+                rgba(255, 200, 100, 0.1) 0%,
+                transparent 65%
+            ),
+            // Переливы перламутра
+            radial-gradient(
+                    circle at 60% 30%,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    transparent 60%
+                );
+        // УБИРАЕМ transform анимации, оставляем только цветовые изменения
+        animation: goldenShift 50s ease-in-out infinite;
+        z-index: -3;
+        pointer-events: none;
+        opacity: 1;
+    }
+
+    // Слой с плавающими частицами золота
+    &::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: 
+            // Крупные золотые частицы - УВЕЛИЧИВАЕМ РАЗМЕР СЕТКИ
+            radial-gradient(
+                circle at 15% 15%,
+                rgba(255, 215, 0, 0.3) 0px,
+                rgba(255, 215, 0, 0.2) 2px,
+                transparent 8px
+            ),
+            radial-gradient(
+                circle at 85% 85%,
+                rgba(255, 165, 1, 0.25) 0px,
+                rgba(255, 165, 1, 0.15) 3px,
+                transparent 10px
+            ),
+            radial-gradient(
+                circle at 50% 50%,
+                rgba(255, 200, 100, 0.2) 0px,
+                rgba(255, 200, 100, 0.1) 1px,
+                transparent 6px
+            ),
+            // Мелкие блестки
+            radial-gradient(
+                    circle at 25% 75%,
+                    rgba(255, 255, 255, 0.4) 1px,
+                    transparent 2px
+                ),
+            radial-gradient(
+                circle at 75% 25%,
+                rgba(255, 255, 255, 0.3) 1px,
+                transparent 2px
+            ),
+            radial-gradient(
+                circle at 90% 60%,
+                rgba(255, 255, 255, 0.35) 1px,
+                transparent 2px
+            ),
+            radial-gradient(
+                circle at 10% 40%,
+                rgba(255, 255, 255, 0.3) 1px,
+                transparent 2px
+            );
+        // УВЕЛИЧИВАЕМ размеры сетки чтобы покрыть края
+        background-size: 800px 800px, 900px 900px, 700px 700px, 400px 400px,
+            500px 500px, 600px 600px, 700px 700px;
+        animation: particleDrift 100s linear infinite,
+            sparkleTwinkle 8s ease-in-out infinite;
+        z-index: -2;
+        pointer-events: none;
+        opacity: 0.6;
+        mix-blend-mode: overlay;
+    }
+}
+
+// Слой с анимированными волнами
+.background-waves {
+    position: fixed;
+    inset: 0;
+    background: 
+        // Шелковые волны - УВЕЛИЧИВАЕМ РАЗМЕР ПАТТЕРНА
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 80px,
+            rgba(255, 250, 240, 0.1) 80px,
+            rgba(255, 250, 240, 0.1) 160px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 120px,
+            rgba(255, 245, 230, 0.08) 120px,
+            rgba(255, 245, 230, 0.08) 240px
+        ),
+        // Золотые прожилки
+        repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 150px,
+                rgba(255, 215, 0, 0.05) 150px,
+                rgba(255, 215, 0, 0.05) 300px
+            );
+    // УБИРАЕМ transform анимации, оставляем только движение фона
+    animation: waveFlow 150s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.4;
+    mix-blend-mode: soft-light;
+}
+
+// Слой с голографическими переливами
+.background-hologram {
+    position: fixed;
+    inset: 0;
+    background: 
+        // УВЕЛИЧИВАЕМ РАЗМЕР ГРАДИЕНТОВ
+        radial-gradient(
+            ellipse at 30% 70%,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 80%
+        ),
+        radial-gradient(
+            ellipse at 70% 30%,
+            rgba(255, 240, 220, 0.1) 0%,
+            transparent 90%
+        ),
+        linear-gradient(
+            125deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 30%,
+            transparent 70%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+    // УБИРАЕМ transform анимации
+    animation: lightSweep 25s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.3;
+    mix-blend-mode: color-dodge;
+}
+
+// Анимации премиум-класса (ИСПРАВЛЕННЫЕ)
+@keyframes goldenShift {
+    0%,
+    100% {
+        filter: hue-rotate(0deg) saturate(1) contrast(1);
+    }
+    33% {
+        filter: hue-rotate(8deg) saturate(1.1) contrast(1.05);
+    }
+    66% {
+        filter: hue-rotate(-5deg) saturate(0.95) contrast(0.98);
+    }
+}
+
+@keyframes particleDrift {
+    0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+    }
+    100% {
+        background-position: 800px 800px, 900px 900px, 700px 700px, 400px 400px,
+            500px 500px, 600px 600px, 700px 700px;
+    }
+}
+
+@keyframes sparkleTwinkle {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    25% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    75% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes waveFlow {
+    0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%;
+    }
+    100% {
+        background-position: 1600px 1600px, 2400px 2400px, 3000px 3000px;
+    }
+}
+
+@keyframes lightSweep {
+    0%,
+    100% {
+        filter: brightness(1) contrast(1);
+    }
+    50% {
+        filter: brightness(1.1) contrast(1.05);
+    }
+}
+
+// УДАЛЯЕМ НЕНУЖНЫЕ АНИМАЦИИ:
+// @keyframes luxuryFloat - УДАЛЕНА (двигала весь фон)
+// @keyframes silkShimmer - УДАЛЕНА
+// @keyframes hologramFloat - УДАЛЕНА
+
+// Премиум анимация появления контента
+@keyframes luxuryContentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(50px) perspective(1000px) rotateX(8deg);
+        filter: blur(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) perspective(1000px) rotateX(0);
+        filter: blur(0);
+    }
+}
+
+// Применяем анимации к секциям
+.resume,
+.skills,
+.portfolio,
+.price,
+.contacts,
+.about {
+    animation: luxuryContentReveal 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+// Последовательное появление
+.promo {
+    animation-delay: 0.1s;
+}
+.about {
+    animation-delay: 0.2s;
+}
+.resume {
+    animation-delay: 0.3s;
+}
+.skills {
+    animation-delay: 0.4s;
+}
+.portfolio {
+    animation-delay: 0.5s;
+}
+.price {
+    animation-delay: 0.6s;
+}
+.contacts {
+    animation-delay: 0.7s;
+}
+
+// Оптимизация производительности
+@media (prefers-reduced-motion: no-preference) {
+    body::before,
+    body::after,
+    .background-waves,
+    .background-hologram {
+        will-change: filter, opacity, background-position;
+    }
+}

@@ -1,7 +1,163 @@
-.btn{
+$main-color: #ffa501;
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
     padding: 12px 25px;
-    height: 45px; 
-    background: #FFA501; 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
+    height: 45px;
+    min-width: 140px;
+
+    border-radius: 999px;
+    border: none;
+    outline: none;
+
+    background: linear-gradient(
+        135deg,
+        lighten($main-color, 7%),
+        darken($main-color, 3%)
+    );
+    color: #3b2400;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
+        background 0.2s ease-out, color 0.2s ease-out, opacity 0.2s ease-out;
+
+    // легкое свечение поверх
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at 0% 0%,
+            rgba(255, 255, 255, 0.35),
+            transparent 55%
+        );
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        transform: translate3d(-10%, -10%, 0);
+    }
+
+    // тонкая линия подсветки по низу
+    &::after {
+        content: "";
+        position: absolute;
+        left: 10%;
+        right: 10%;
+        bottom: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        opacity: 0;
+        transform: scaleX(0.4);
+        transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.16),
+            0 0 0 1px rgba(255, 255, 255, 0.4);
+        background: linear-gradient(
+            135deg,
+            lighten($main-color, 10%),
+            darken($main-color, 5%)
+        );
+
+        &::before {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        &::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    &:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18),
+            0 0 0 1px rgba(255, 255, 255, 0.3);
+        background: linear-gradient(
+            135deg,
+            darken($main-color, 2%),
+            darken($main-color, 8%)
+        );
+
+        &::before {
+            opacity: 0.7;
+        }
+
+        &::after {
+            opacity: 0.9;
+            transform: scaleX(0.85);
+        }
+    }
+
+    &:disabled,
+    &.btn--disabled {
+        cursor: default;
+        opacity: 0.6;
+        transform: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        background: linear-gradient(
+            135deg,
+            lighten($main-color, 18%),
+            lighten($main-color, 5%)
+        );
+
+        &::before,
+        &::after {
+            opacity: 0;
+        }
+    }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 0 rgba($main-color, 0),
+            0 0 0 3px rgba($main-color, 0.6);
+        transform: translateY(-1px);
+    }
+
+    // вариант без заливки (если понадобится)
+    &.btn--outline {
+        background: transparent;
+        color: #444;
+        box-shadow: none;
+        border: 1px solid rgba($main-color, 0.7);
+
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        &:hover {
+            background: rgba($main-color, 0.08);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            color: #2b2b2b;
+        }
+
+        &:active {
+            background: rgba($main-color, 0.16);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
 }

@@ -1,106 +1,231 @@
-.hamburger{
+$main-color: #ffa501;
+
+.hamburger {
     position: absolute;
     top: 20px;
     right: 30px;
-    height: 21px;
+    height: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
     cursor: pointer;
-    span{
+    z-index: 20;
+    padding: 4px 2px;
+    -webkit-tap-highlight-color: transparent;
+
+    span {
         display: block;
         width: 30px;
         height: 3px;
-        background: #151812;
+        border-radius: 999px;
+        background: linear-gradient(
+            135deg,
+            darken($main-color, 20%),
+            darken($main-color, 35%)
+        );
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        transition: transform 0.25s ease-out, background 0.25s ease-out,
+            box-shadow 0.25s ease-out, width 0.25s ease-out;
     }
-    span.long{
+
+    span.long {
         width: 36px;
+    }
+
+    &:hover span {
+        background: linear-gradient(
+            135deg,
+            darken($main-color, 10%),
+            darken($main-color, 30%)
+        );
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &:hover span:nth-child(1) {
+        transform: translateX(2px);
+    }
+
+    &:hover span:nth-child(2) {
+        transform: translateX(-1px);
+    }
+
+    &:hover span:nth-child(3) {
+        transform: translateX(3px);
     }
 }
 
-.menu{
+.menu {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100vh;
-    z-index: 10;
+    z-index: 15;
     visibility: hidden;
     opacity: 0;
-    transition:  all .6s;
-    &.active{
-        left: 0;
+    transform: translateX(-100%);
+    transition: visibility 0s linear 0.45s, opacity 0.45s ease-out,
+        transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    &.active {
         visibility: visible;
         opacity: 1;
+        transform: translateX(0);
+        transition-delay: 0s;
     }
-    &__block{
-        position: relative;     
+
+    &__block {
+        position: relative;
         width: 345px;
-        background-color: $main-color;
+        max-width: 80%;
         height: 100%;
         padding-top: 140px;
         padding-left: 40px;
-        transition: all .6s;
+        padding-right: 20px;
+
+        background: linear-gradient(
+            135deg,
+            lighten($main-color, 8%),
+            darken($main-color, 4%)
+        );
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
+        border-radius: 0 24px 24px 0;
         z-index: 10;
+
+        transform: translateX(-20px);
+        transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+        .menu.active & {
+            transform: translateX(0);
+        }
     }
-    &__close{
+
+    &__close {
         position: absolute;
         top: 25px;
         right: 25px;
         cursor: pointer;
+        width: 26px;
+        height: 26px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.18);
+        transition: background 0.2s ease-out, transform 0.2s ease-out,
+            box-shadow 0.2s ease-out;
+
+        img,
+        svg {
+            max-width: 14px;
+            max-height: 14px;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.28);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+        }
     }
-    &__list{
+
+    &__list {
         list-style-type: none;
         padding-left: 35px;
+        margin: 0;
     }
+
     &__link {
         position: relative;
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 36px;
-        margin-bottom: 15px;
-        &:before {
-            content: '';
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 32px;
+        margin-bottom: 16px;
+        letter-spacing: 0.03em;
+
+        &::before {
+            content: "";
             position: absolute;
             left: -35px;
             top: 10px;
             width: 15px;
             height: 15px;
-            border-radius: 100%;
-            border: 1px solid #000000;
-            transition: all 0.9s;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.9);
+            background: rgba(255, 255, 255, 0.08);
+            transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out,
+                transform 0.3s ease-out;
         }
-        &:hover {
-            &:before {
 
-                background-color: #ffffff;
-            }
+        &:hover::before {
+            background-color: #ffffff;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            transform: scale(1.08);
         }
+
         a {
             text-decoration: none;
             color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+
+            &:hover {
+                transform: translateX(2px);
+                opacity: 0.92;
+            }
         }
     }
-    &__social{
+
+    &__social {
         position: absolute;
         bottom: 50px;
         left: 50%;
         transform: translateX(-50%);
-        width: 90px;
+        width: 110px;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.16);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out,
+                background 0.2s ease-out;
+
+            img,
+            svg {
+                max-width: 16px;
+                max-height: 16px;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+                background: rgba(255, 255, 255, 0.22);
+                box-shadow: 0 7px 16px rgba(0, 0, 0, 0.35);
+            }
+        }
     }
-    &__overlay{
+
+    &__overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #fff;
-        opacity: .75;
-        
+        background: radial-gradient(
+                circle at 0 0,
+                rgba(255, 255, 255, 0.9),
+                transparent 60%
+            ),
+            rgba(0, 0, 0, 0.25);
+        opacity: 0.75;
+        z-index: 5;
+        backdrop-filter: blur(2px);
     }
 }

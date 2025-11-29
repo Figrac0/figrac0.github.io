@@ -1,44 +1,395 @@
-.price{
-    padding-top: 60px;
+$main-color: #ffa501;
+
+.price {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+        z-index: -1;
+        animation: premiumBackgroundShift 25s ease-in-out infinite;
+    }
+
+    // Декоративные элементы
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 165, 1, 0.1),
+            transparent
+        );
+        z-index: -1;
+    }
+
     &__title {
         position: relative;
         text-align: center;
+        margin-bottom: 80px;
         @include before_circle;
+
         &:before {
-            top: -6px;
+            top: -8px;
             left: 50%;
             transform: translateX(-50%);
+            background: linear-gradient(
+                135deg,
+                $main-color,
+                lighten($main-color, 15%),
+                $main-color
+            );
+            animation: premiumCirclePulse 3s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(255, 165, 1, 0.3);
+        }
+
+        &-text {
+            font-family: "Playfair Display", serif;
+            font-size: 42px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2c2c2c, #555);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 3px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    $main-color,
+                    transparent
+                );
+                border-radius: 2px;
+            }
         }
     }
-    &__wrapper {
-        margin-top: 60px;
-        padding: 0 60px;
-        display: grid;
-        grid-template: repeat(3, minmax(40px, auto)) / repeat(2, 370px);
-        grid-auto-rows: minmax(40px, auto);
-        justify-content: space-between;
-        gap: 15px;
+
+    &__subtitle {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        font-size: 18px;
+        color: #666;
+        margin-top: 25px;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease-out 0.3s both;
     }
-    &__item{
+
+    &__wrapper {
+        margin-top: 80px;
+        padding: 0 80px;
+        display: grid;
+        grid-template: repeat(3, minmax(70px, auto)) / repeat(2, 420px);
+        grid-auto-rows: minmax(70px, auto);
+        justify-content: space-between;
+        gap: 25px;
+        position: relative;
+    }
+
+    &__item {
         position: relative;
         display: grid;
-        grid-template: repeat(2, minmax(21px, auto)) / repeat(2, auto);
-        row-gap: 5px;
-        padding-left: 25px;
-        &:before{
-            content: '';
+        grid-template: repeat(2, minmax(25px, auto)) / 1fr auto;
+        align-items: start;
+        row-gap: 8px;
+        padding: 25px 30px 25px 45px;
+
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+
+        // Многослойные тени для премиум вида
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06),
+            0 1px 0 rgba(255, 255, 255, 0.8) inset,
+            0 -1px 0 rgba(0, 0, 0, 0.02) inset;
+
+        font-family: "Inter", sans-serif;
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+
+        // Анимированный градиентный бордер
+        &::before {
+            content: "";
             position: absolute;
-            width: 15px;
-            height: 15px; 
-            background: $main-color; 
-            border-radius: 100%; 
-            top: 3px;
+            inset: 0;
+            padding: 2px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 165, 1, 0.1),
+                rgba(255, 165, 1, 0.05),
+                rgba(255, 165, 1, 0.1)
+            );
+            border-radius: 20px;
+            mask: linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            -webkit-mask-composite: xor;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        // Декоративный элемент
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4),
+                transparent
+            );
+            transition: left 0.8s ease;
+        }
+
+        // Индикатор услуги
+        .service-indicator {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 28px;
+            left: 25px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                $main-color,
+                lighten($main-color, 20%)
+            );
+            box-shadow: 0 0 0 0 rgba($main-color, 0.4),
+                0 2px 8px rgba(255, 165, 1, 0.3);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 4px;
+                height: 4px;
+                background: white;
+                border-radius: 50%;
+                opacity: 0.9;
+            }
+        }
+
+        &:hover {
+            transform: translateY(-8px) scale(1.02);
+            background: rgba(255, 255, 255, 0.95);
+
+            // Улучшенные тени при наведении
+            box-shadow: 0 25px 50px rgba(255, 165, 1, 0.15),
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                0 1px 0 rgba(255, 255, 255, 0.9) inset;
+
+            &::before {
+                opacity: 1;
+            }
+
+            &::after {
+                left: 100%;
+            }
+
+            .service-indicator {
+                transform: scale(1.3);
+                box-shadow: 0 0 0 6px rgba($main-color, 0.2),
+                    0 4px 12px rgba(255, 165, 1, 0.4);
+            }
+
+            .price__count {
+                transform: scale(1.1);
+                color: $main-color;
+            }
+
+            .price__descr {
+                transform: translateX(5px);
+            }
+        }
+
+        // Анимация появления
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i}) {
+                animation: priceItemReveal 0.8s ease-out #{$i * 0.1}s both;
+            }
         }
     }
-    &__count{
-        justify-self: end;
+
+    &__service {
+        font-weight: 600;
+        font-size: 16px;
+        color: #2c2c2c;
+        letter-spacing: -0.2px;
+        line-height: 1.3;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: $main-color;
+            transition: width 0.4s ease;
+        }
     }
-    &__descr{
-        grid-column: 1/3;
+
+    &__item:hover &__service::after {
+        width: 100%;
+    }
+
+    &__count {
+        justify-self: end;
+        font-weight: 700;
+        font-size: 20px;
+        color: #2c2c2c;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+
+        &::before {
+            content: "₽";
+            font-size: 14px;
+            margin-right: 4px;
+            opacity: 0.7;
+        }
+    }
+
+    &__descr {
+        grid-column: 1 / 3;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #666;
+        margin-top: 5px;
+        transition: all 0.4s ease;
+        font-weight: 300;
+        letter-spacing: 0.2px;
+    }
+
+    // Декоративные элементы между карточками
+    &__divider {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255, 165, 1, 0.1),
+            transparent
+        );
+        transform: translateX(-50%);
+    }
+}
+
+// Премиум анимации
+@keyframes premiumBackgroundShift {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0) scale(1);
+    }
+    25% {
+        transform: translateX(-10px) translateY(10px) scale(1.02);
+    }
+    50% {
+        transform: translateX(5px) translateY(-5px) scale(1.01);
+    }
+    75% {
+        transform: translateX(8px) translateY(8px) scale(1.03);
+    }
+}
+
+@keyframes premiumCirclePulse {
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 30px rgba(255, 165, 1, 0.3);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 0 50px rgba(255, 165, 1, 0.5);
+    }
+}
+
+@keyframes priceItemReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Адаптивность
+@media (max-width: 1200px) {
+    .price {
+        &__wrapper {
+            grid-template-columns: 1fr;
+            justify-content: center;
+            padding: 0 40px;
+        }
+
+        &__divider {
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .price {
+        padding-top: 80px;
+        padding-bottom: 80px;
+
+        &__title-text {
+            font-size: 36px;
+        }
+
+        &__wrapper {
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        &__item {
+            padding: 20px 25px 20px 40px;
+        }
     }
 }

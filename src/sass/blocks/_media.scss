@@ -1,323 +1,370 @@
-@media(max-width: 1350px){
-    .sidepanel{
+@media (max-width: 1350px) {
+    .sidepanel {
         display: none;
     }
 }
 
-@media(max-width: 1200px){
-    .container{
+@media (max-width: 1200px) {
+    .container {
         max-width: 960px;
     }
-    .about{
-        &__wrapper{
+
+    .about {
+        &__wrapper {
             grid-template-columns: 400px 520px;
             column-gap: 40px;
         }
-        &__skills{
-            grid-template-columns: repeat(2,minmax(115px,auto))/repeat(2,250px);
+
+        &__skills {
+            grid-template-columns: repeat(2, minmax(115px, auto)) / repeat(
+                    2,
+                    250px
+                );
             column-gap: 20px;
-            &-item{
-                grid-template-columns: 40px 195px;
+
+            &-item {
+                grid-template-columns: 40px 1fr; // было 40px 195px
                 gap: 15px;
             }
         }
     }
-    .resume{
-        &__wrapper{
-            
+
+    .resume {
+        &__wrapper {
             grid-template-columns: repeat(2, 380px);
             justify-content: space-between;
         }
-        
     }
-    .skills{
+
+    .skills {
         &__items {
-            // grid-template: repeat(2, minmax(270px, auto)) / repeat(3, 270px);
             grid-template-columns: repeat(auto-fit, 270px);
             justify-content: space-between;
             row-gap: 30px;
         }
+
         &__ratings {
-            // grid-template: repeat(3, minmax(70px, auto)) / repeat(2, 350px);
             grid-template-columns: repeat(auto-fit, 350px);
             grid-auto-rows: minmax(70px, auto);
             justify-content: center;
         }
     }
-    .portfolio{
-        &__wrapper{
+
+    .portfolio {
+        &__wrapper {
             grid-template-columns: repeat(auto-fit, 280px);
             grid-auto-rows: 280px;
             justify-content: space-around;
             row-gap: 35px;
-            .horizonal{
+
+            .horizonal {
                 grid-row: unset;
                 grid-column: unset;
             }
-            .vertical{
+
+            .vertical {
                 grid-row: unset;
-                grid-column: unset; 
+                grid-column: unset;
             }
         }
     }
+
     .contacts {
         &__wrapper {
             padding: 0;
             grid-template-columns: 400px 520px;
         }
+
         &__form {
             grid-template: 45px 190px 45px / repeat(2, 250px);
         }
     }
-    
-
 }
-@media(max-width: 992px){
-    .container{
+
+@media (max-width: 992px) {
+    .container {
         max-width: 720px;
     }
-    .title{
-        &_fz36{
+
+    .title {
+        &_fz36 {
             font-size: 30px;
             line-height: 42px;
             margin-bottom: 26px;
         }
     }
-    .divider{
-        margin: 15px auto 0 auto; 
+
+    .divider {
+        margin: 15px auto 0 auto;
     }
-    .about{
-        &__wrapper{
+
+    .about {
+        &__wrapper {
             grid-template-columns: 300px 380px;
             column-gap: 40px;
         }
-        &__skills{
+
+        &__skills {
             grid-template-columns: 380px;
-            grid-auto-rows: minmax(115px,auto);
-            &-item{
-                grid-template-columns: 40px 320px;
+            grid-auto-rows: minmax(115px, auto);
+
+            &-item {
+                grid-template-columns: 40px 1fr; // было 40px 320px
                 gap: 20px;
             }
         }
     }
-    .resume{
+
+    .resume {
         padding-top: 100px;
-        &__wrapper{ 
+
+        &__wrapper {
             padding-top: 50px;
             grid-template-columns: repeat(1, 425px);
             justify-content: center;
         }
-        
     }
-    .skills{
+
+    .skills {
         &__items {
-            // grid-template: repeat(2, minmax(270px, auto)) / repeat(2, 270px);
             grid-template-columns: repeat(auto-fit, 270px);
             justify-content: center;
             gap: 30px;
         }
+
         &__ratings {
-            // grid-template: repeat(3, minmax(70px, auto)) / repeat(2, 350px);
             grid-template-columns: repeat(auto-fit, 350px);
             justify-content: center;
             column-gap: 20px;
         }
     }
-    .price{
-        &__wrapper{
-            grid-template-columns: repeat(auto-fit,350px );
+
+    .price {
+        &__wrapper {
+            grid-template-columns: repeat(auto-fit, 350px);
             justify-content: center;
         }
     }
+
     .contacts {
         &__wrapper {
             grid-template-columns: 300px 400px;
         }
+
         &__form {
             grid-template: 45px 190px 45px / repeat(2, 195px);
         }
+
         &__btn {
             padding: 8px 25px;
             line-height: 16px;
         }
     }
-    
-    
-    
 }
-@media(max-width: 768px){
-    .container{
+
+@media (max-width: 768px) {
+    .container {
         max-width: 540px;
     }
-    .title{
-        &_fz48{
+
+    .title {
+        &_fz48 {
             font-size: 28px;
         }
     }
-    .promo{
-        &__title{
+
+    .promo {
+        &__title {
             width: 300px;
             line-height: 39px;
         }
     }
-    .about{
+
+    .about {
         padding-top: 40px;
-        &__wrapper{
-            grid-template:  auto auto/ 1fr;
+
+        &__wrapper {
+            grid-template: auto auto / 1fr;
         }
-        &__photo{
+
+        &__photo {
             grid-row: unset;
             margin-bottom: 10px;
         }
-        &__skills{
-            
+
+        &__skills {
             grid-template-columns: repeat(2, 260px);
-            &-item{
+
+            &-item {
                 padding-top: 20px;
                 justify-content: center;
-                grid-template-columns: 40px 200px;
+                grid-template-columns: 40px 1fr; // было 40px 200px
                 gap: 20px;
             }
         }
     }
-    .resume{
+
+    .resume {
         padding-top: 60px;
-        &__wrapper{
+
+        &__wrapper {
             padding-top: 30px;
             grid-template-columns: repeat(1, 300px);
         }
-        
     }
-    .skills{
+
+    .skills {
         &__items {
-            // grid-template: repeat(4, minmax(270px, auto)) / repeat(2, 270px);
             grid-template-columns: repeat(auto-fit, 270px);
             justify-content: center;
         }
+
         &__ratings {
-            // grid-template: repeat(6, minmax(70px, auto)) / repeat(1, 350px);
             grid-template-columns: repeat(auto-fit, 350px);
             justify-content: center;
             column-gap: 20px;
         }
     }
-    .portfolio{
+
+    .portfolio {
         padding-top: 50px;
-            &__wrapper{
-                margin-top: 20px;
-                justify-content: center;
-            }
-            
+
+        &__wrapper {
+            margin-top: 20px;
+            justify-content: center;
         }
-    .price{
+    }
+
+    .price {
         padding-top: 40px;
-        &__wrapper{
+
+        &__wrapper {
             margin-top: 20px;
         }
-    } 
+    }
+
     .contacts {
         padding-top: 40px;
+
         &__photo {
             display: none;
         }
+
         &__wrapper {
             grid-template-columns: 1fr;
         }
+
         &__form {
             grid-template: 45px 190px 45px / repeat(2, 250px);
         }
     }
-      
 }
-@media(max-width: 576px){
-    .container{
+
+@media (max-width: 576px) {
+    .container {
         max-width: 100%;
         padding: 0 10px;
     }
-    .title{
-        &_fz48{
+
+    .title {
+        &_fz48 {
             font-size: 26px;
         }
-        &_fz36{
+
+        &_fz36 {
             font-size: 24px;
         }
     }
-    .hamburger{
+
+    .hamburger {
         right: 20px;
     }
-    .menu{
-        &__block{
+
+    .menu {
+        &__block {
             width: 250px;
             padding-left: 20px;
         }
     }
-    .promo{
-        background: url('../../img/wave2\ \(1\).jpg') no-repeat 57%/cover ;
-        &__btns{
+
+    .promo {
+        background: url("../../img/wave2 (1).jpg") no-repeat 57% / cover;
+
+        &__btns {
             margin-top: 30px;
         }
     }
-    .about{
-        &__wrapper{
-            grid-template:   auto auto/ 1fr;
-        }
-        &__skills{
 
+    .about {
+        &__wrapper {
+            grid-template: auto auto / 1fr;
+        }
+
+        &__skills {
             grid-template-columns: 1fr;
         }
     }
-    .resume{
-        &__wrapper{
+
+    .resume {
+        &__wrapper {
             padding-top: 40px;
             grid-template-columns: repeat(1, 300px);
         }
-        
     }
-    .skills{
+
+    .skills {
         &__items {
-            // grid-template: repeat(7, minmax(270px, auto)) / repeat(1, 270px);
             grid-template-columns: repeat(auto-fit, 270px);
             justify-content: center;
         }
+
         &__ratings {
-            // grid-template: repeat(6, minmax(70px, auto)) / repeat(1, 280px);
             grid-template-columns: repeat(auto-fit, 280px);
             justify-content: center;
             column-gap: 20px;
+
             &-line {
                 width: 280px;
             }
         }
     }
-    .portfolio{
-        &__wrapper{
+
+    .portfolio {
+        &__wrapper {
             justify-content: center;
         }
-    } 
+    }
+
     .price {
         &__wrapper {
             grid-template-columns: repeat(auto-fit, 295px);
         }
     }
+
     .contacts {
         padding-bottom: 50px;
+
         &__form {
             grid-template: 45px 45px 190px minmax(45px, auto) / 1fr;
         }
+
         &__textarea {
             grid-column: unset;
             width: 100%;
         }
+
         &__triggers {
             grid-column: unset;
             grid-template-columns: 1fr;
             column-gap: unset;
             row-gap: 20px;
         }
+
         &__btn {
             max-width: 220px;
             margin: 0 auto;
         }
+
         &__policy {
             width: 180px;
             margin: 0 auto;

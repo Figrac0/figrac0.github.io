@@ -1,43 +1,125 @@
-.title{
+.title {
     font-weight: bold;
     font-size: 36px;
     line-height: 60px;
-    &_fz12{
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(135deg, #2c2c2c, #555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+
+    &_fz12 {
         font-size: 12px;
         line-height: 18px;
+        font-family: "Inter", sans-serif;
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: #666;
     }
-    &_fz14{
+    &_fz14 {
         font-size: 14px;
         line-height: 21px;
+        font-family: "Inter", sans-serif;
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: #666;
     }
-    &_fz16{
+    &_fz16 {
         font-size: 16px;
         line-height: 24px;
+        font-family: "Inter", sans-serif;
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: #444;
     }
-    &_fz20{
+    &_fz20 {
         font-size: 20px;
         line-height: 30px;
+        font-family: "Inter", sans-serif;
+        background: none;
+        -webkit-text-fill-color: initial;
+        color: #333;
     }
-    &_fz36{
-        font-size: 16px;
-    }
-    &_fz36{
+    &_fz36 {
         font-size: 36px;
+        background: linear-gradient(135deg, #2c2c2c, #555);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
-    &_fz48{
+    &_fz48 {
         font-size: 48px;
+        background: linear-gradient(135deg, #1a1a1a, #444);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
+
     &__section-title {
         position: relative;
         text-align: center;
         @include before_circle;
+        animation: titleReveal 0.8s ease-out both;
+
         &:before {
             top: -6px;
             left: 50%;
             transform: translateX(-50%);
+            background: linear-gradient(
+                135deg,
+                $main-color,
+                lighten($main-color, 15%)
+            );
+            animation: circlePulse 3s ease-in-out infinite;
         }
     }
+
     &__section-subtitle {
         text-align: center;
+        font-family: "Inter", sans-serif;
+        color: #666;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        animation: subtitleReveal 0.8s ease-out 0.3s both;
+
+        &:hover {
+            color: $main-color;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+@keyframes titleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes subtitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes circlePulse {
+    0%,
+    100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 20px rgba(255, 165, 1, 0.4);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 165, 1, 0.6);
     }
 }

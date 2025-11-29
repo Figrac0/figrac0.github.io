@@ -1,4 +1,4 @@
-.sidepanel{
+.sidepanel {
     position: fixed;
     height: 340px;
     top: 230px;
@@ -8,33 +8,93 @@
     justify-content: space-between;
     z-index: 3;
     align-items: center;
-    
-    &__link{
+
+    &__link {
         width: 20px;
-        height: 19px; 
-        transform: rotate(-90deg); 
-        transform-origin: 0 0; 
+        height: 19px;
+        transform: rotate(-90deg);
+        transform-origin: 0 0;
         text-decoration: none;
-        
-        &:hover{
-            filter: blur(0.7px);
+
+        &:hover {
             animation: pulse 2s infinite;
-            
         }
     }
-    &__divider{
+    &__divider {
         width: 2px;
         height: 70px;
-        background-color: $main-color;
-        transition: background-color 0.2s ease-in-out;
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            $main-color,
+            lighten($main-color, 15%),
+            $main-color,
+            transparent
+        );
+        background-size: 100% 300%;
+        background-position: 0% 0%;
+        border-radius: 1px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        animation: dividerFlow 3s ease-in-out infinite;
+
+        // Блестящая полоска, бегущая по делителю
+        &::before {
+            content: "";
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(255, 255, 255, 0.8),
+                rgba(255, 255, 255, 0.6),
+                transparent
+            );
+            animation: dividerShine 4s ease-in-out infinite;
+        }
+
+        // Эффект свечения
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $main-color;
+            opacity: 0.3;
+            filter: blur(3px);
+            z-index: -1;
+        }
+
+        &:hover {
+            animation: dividerHover 1.5s ease-in-out infinite;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                lighten($main-color, 20%),
+                $main-color,
+                lighten($main-color, 20%),
+                transparent
+            );
+
+            &::before {
+                animation-duration: 2s;
+            }
+        }
     }
-    &__text{
+
+    &__text {
         height: 150px;
         width: 25px;
-        color:$main-color;
+        color: $main-color;
         font-weight: 500;
-        span{
-            transform: rotate(-90deg) translate(-30%,-260%);
+        span {
+            transform: rotate(-90deg) translate(-30%, -260%);
             display: block;
             width: 150px;
             transition: color 0.4s ease-in-out;
@@ -42,4 +102,61 @@
     }
 }
 
+@keyframes dividerFlow {
+    0%,
+    100% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 0% 100%;
+    }
+}
 
+@keyframes dividerHover {
+    0%,
+    100% {
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            lighten($main-color, 20%),
+            $main-color,
+            lighten($main-color, 20%),
+            transparent
+        );
+        transform: scaleX(1);
+    }
+    50% {
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            $main-color,
+            lighten($main-color, 25%),
+            $main-color,
+            transparent
+        );
+        transform: scaleX(1.1);
+    }
+}
+
+@keyframes dividerShine {
+    0% {
+        top: -100%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0.8;
+    }
+    60% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
+}
