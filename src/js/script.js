@@ -71,3 +71,76 @@ $(document).ready(function () {
         updateTextColorAndDivider();
     });
 });
+
+// menu
+// hamburger
+// scroll
+// другие обработчики
+
+(function () {
+    const gallerySelector = '[data-lightbox="achievements"]';
+    const items = Array.from(document.querySelectorAll(gallerySelector));
+
+    if (!items.length) return;
+
+    const root = document.getElementById("achievementsLightbox");
+    if (!root) return;
+
+    const imgEl = root.querySelector(".achievements-lightbox__img");
+    const captionEl = root.querySelector(".achievements-lightbox__caption");
+
+    let activeIndex = 0;
+
+    function openAt(index) {
+        activeIndex = (index + items.length) % items.length;
+
+        const btn = items[activeIndex];
+        const src = btn.getAttribute("data-src");
+        const title = btn.getAttribute("data-title") || "";
+
+        imgEl.setAttribute("src", src);
+        imgEl.setAttribute("alt", title);
+        captionEl.textContent = title;
+
+        root.classList.add("active");
+        root.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+        root.classList.remove("active");
+        root.setAttribute("aria-hidden", "true");
+        imgEl.removeAttribute("src");
+        imgEl.setAttribute("alt", "");
+        captionEl.textContent = "";
+        document.body.style.overflow = "";
+    }
+
+    function next() {
+        openAt(activeIndex + 1);
+    }
+
+    function prev() {
+        openAt(activeIndex - 1);
+    }
+
+    items.forEach((btn, idx) => {
+        btn.addEventListener("click", () => openAt(idx));
+    });
+
+    root.addEventListener("click", (e) => {
+        const t = e.target;
+
+        if (t && t.matches("[data-close='1']")) close();
+        if (t && t.matches("[data-next='1']")) next();
+        if (t && t.matches("[data-prev='1']")) prev();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (!root.classList.contains("active")) return;
+
+        if (e.key === "Escape") close();
+        if (e.key === "ArrowRight") next();
+        if (e.key === "ArrowLeft") prev();
+    });
+})();

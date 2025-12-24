@@ -216,6 +216,9 @@
                             <a href="#portfolio">МОИ РАБОТЫ</a>
                         </li>
                         <li class="menu__link">
+                            <a href="#achievements">ДОСТИЖЕНИЯ</a>
+                        </li>
+                        <li class="menu__link">
                             <a href="#pricing">ПРАЙС-ЛИСТ</a>
                         </li>
                         <li class="menu__link">
@@ -836,7 +839,7 @@
                     >
                         <img
                             src="img/works/NextLevelFoodies.png"
-                            alt="Foodies – Next.js App"
+                            alt="Foodies - Next.js App"
                         />
                     </a>
 
@@ -866,6 +869,142 @@
                             alt="Time Challenge App"
                         />
                     </a>
+
+                    <a
+                        href="https://react-ts-mentoring.vercel.app/"
+                        target="_blank"
+                        class="portfolio__item"
+                    >
+                        <img
+                            src="img/works/Mentoring.png"
+                            alt="React TS Mentoring"
+                        />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements achievements--readable" id="achievements">
+            <div class="container">
+                <h2 class="title title_fz16 title__section-title">
+                    Достижения
+                </h2>
+                <div class="title title_fz36 title__section-subtitle">
+                    Сертификаты и участия
+                </div>
+                <div class="divider"></div>
+
+                <div class="achievements__wrapper">
+                    <button
+                        class="achievements__item"
+                        type="button"
+                        data-lightbox="achievements"
+                        data-src="img/achievements/Сертификат 2025_Саблин Сергей Игоревич.jpg"
+                        data-title="Сертификат 2025"
+                        aria-label="Открыть сертификат 2025"
+                    >
+                        <img
+                            src="img/achievements/Сертификат 2025_Саблин Сергей Игоревич.jpg"
+                            alt="Сертификат 2025 – Саблин Сергей Игоревич"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <button
+                        class="achievements__item"
+                        type="button"
+                        data-lightbox="achievements"
+                        data-src="img/achievements/certificate_participant_page-0001.jpg"
+                        data-title="Участник"
+                        aria-label="Открыть сертификат участника"
+                    >
+                        <img
+                            src="img/achievements/certificate_participant_page-0001.jpg"
+                            alt="Сертификат участника"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <button
+                        class="achievements__item"
+                        type="button"
+                        data-lightbox="achievements"
+                        data-src="img/achievements/react-complete.jpg"
+                        data-title="React – Complete"
+                        aria-label="Открыть сертификат React"
+                    >
+                        <img
+                            src="img/achievements/react-complete.jpg"
+                            alt="Сертификат React – Complete"
+                            loading="lazy"
+                        />
+                    </button>
+
+                    <button
+                        class="achievements__item"
+                        type="button"
+                        data-lightbox="achievements"
+                        data-src="img/achievements/TS-practical.jpg"
+                        data-title="TypeScript – Practical"
+                        aria-label="Открыть сертификат TypeScript"
+                    >
+                        <img
+                            src="img/achievements/TS-practical.jpg"
+                            alt="Сертификат TypeScript – Practical"
+                            loading="lazy"
+                        />
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="achievements-lightbox"
+                id="achievementsLightbox"
+                aria-hidden="true"
+            >
+                <div
+                    class="achievements-lightbox__overlay"
+                    data-close="1"
+                ></div>
+
+                <div
+                    class="achievements-lightbox__dialog"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Просмотр сертификата"
+                >
+                    <button
+                        class="achievements-lightbox__close"
+                        type="button"
+                        aria-label="Закрыть"
+                        data-close="1"
+                    >
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="achievements-lightbox__content">
+                        <button
+                            class="achievements-lightbox__nav achievements-lightbox__nav--prev"
+                            type="button"
+                            aria-label="Предыдущее"
+                            data-prev="1"
+                        ></button>
+
+                        <figure class="achievements-lightbox__figure">
+                            <img class="achievements-lightbox__img" alt="" />
+                            <figcaption
+                                class="achievements-lightbox__caption"
+                            ></figcaption>
+                        </figure>
+
+                        <button
+                            class="achievements-lightbox__nav achievements-lightbox__nav--next"
+                            type="button"
+                            aria-label="Следующее"
+                            data-next="1"
+                        ></button>
+                    </div>
                 </div>
             </div>
         </section>
